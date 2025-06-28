@@ -22,17 +22,54 @@
                 </div>
             </div>
 
-            <!-- Menu de navegação - lado direito -->
-            <ul class="flex space-x-4 relative z-10">
-                <li><a href="" class="hover:underline">login</a></li>
-            </ul>
+            <!-- Menu de navegação com usuário - lado direito -->
+            <div class="flex items-center space-x-4 relative z-10">
+                <!-- Informações do usuário -->
+                <div *ngIf="currentUser" class="flex items-center space-x-3">
+                    <!-- Avatar com iniciais -->
+                    <div
+                        class="w-10 h-10 bg-[#f89406] rounded-full flex items-center justify-center text-white font-semibold text-sm shadow-lg">
+                        {{ getUserInitials() }}
+                    </div>
+                    <!-- Nome do usuário -->
+                    <div class="flex flex-col">
+                        <span class="text-sm font-medium">{{ currentUser.nome }}</span>
+                        <span class="text-xs text-gray-300">{{ currentUser.email }}</span>
+                    </div>
+                    <!-- Botão de logout -->
+                    <button (click)="logout()"
+                        class="ml-4 px-3 py-1 bg-red-600 hover:bg-red-700 rounded text-sm transition-colors duration-200"
+                        title="Sair">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                </div>
+                <!-- Menu de navegação padrão se não estiver logado -->
+                <ul *ngIf="!currentUser" class="flex space-x-4">
+                    <li><a href="/login" class="hover:underline">login</a></li>
+                </ul>
+            </div>
 
             <!-- Elemento para criar a borda inclinada -->
             <div class="absolute top-0 right-0 w-3xl h-full bg-[#db8205]"
                 style="clip-path: polygon(17% 0%, 100% 0%, 100% 100%, 10% 100%);"></div>
         </nav>
-        <div class="flex-1 overflow-hidden">
+        <div class="flex-1 overflow-hidden relative">
             <img src="/img_2.jpg" alt="Imagem de montanha" class="w-full h-full object-cover brightness-50">
+            <!-- Mensagem de boas-vindas sobreposta -->
+            <div *ngIf="currentUser" class="absolute inset-0 flex items-center justify-center">
+                <div class="text-center text-white">
+                    <h1 class="text-5xl font-bold mb-4 drop-shadow-lg">
+                        Bem-vindo, {{ currentUser.nome.split(' ')[0] }}!
+                    </h1>
+                    <p class="text-xl opacity-90 drop-shadow-lg">
+                        Seja bem-vindo ao seu painel personalizado
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 

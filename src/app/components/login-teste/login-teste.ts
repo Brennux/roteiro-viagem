@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { UserService } from '../../service/user.service';
+import { AuthService } from '../../service/auth.service';
 
 @Component({
   selector: 'app-login-teste',
@@ -11,7 +12,7 @@ import { UserService } from '../../service/user.service';
   styleUrl: './login-teste.css'
 })
 export class LoginTeste {
-  loginForm: FormGroup;
+  loginForm!: FormGroup;
   isLoading = false;
   loginError = '';
   loginSuccess = '';
@@ -19,8 +20,15 @@ export class LoginTeste {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private authService: AuthService
   ) {
+    // Redirecionar para home se já estiver logado
+    if (this.authService.isLoggedIn()) {
+      this.router.navigate(['/home']);
+      return;
+    }
+
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
@@ -65,10 +73,14 @@ export class LoginTeste {
             this.loginSuccess = result.message;
             console.log('Login bem-sucedido:', result.user);
 
-            // Redirecionar após sucesso (pode ser para uma dashboard, por exemplo)
+            // Definir usuário atual no AuthService
+            if (result.user) {
+              this.authService.setCurrentUser(result.user);
+            }
+
+            // Redirecionar para a página home
             setTimeout(() => {
-              // Por enquanto, vamos apenas mostrar um alerta
-              alert(`Bem-vindo, ${result.user?.nome}!`);
+              this.router.navigate(['/home']);
             }, 1000);
           } else {
             this.loginError = result.message;

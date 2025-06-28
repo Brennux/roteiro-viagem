@@ -1,1 +1,73 @@
 /* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* Garantir que o app-root ocupe toda a altura */
+app-root {
+    display: block;
+    min-height: 100%;
+}
+
+/* BARRA DE ROLAGEM LATERAL (VERTICAL) PERSONALIZADA */
+/* Para Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 6px !important;
+    /* Largura pequena e elegante */
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(36, 60, 79, 0.05) !important;
+    /* Fundo azul muito sutil */
+    border-radius: 3px !important;
+    margin: 8px !important;
+    /* Margens maiores para ficar mais delicado */
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #f89406, #db8205) !important;
+    /* Gradiente vertical laranja */
+    border-radius: 3px !important;
+    border: none !important;
+    /* Sem bordas para ficar mais limpo */
+    transition: all 0.2s ease !important;
+    /* Transição mais rápida */
+    min-height: 15px !important;
+    /* Altura mínima bem pequena */
+    box-shadow: 0 1px 3px rgba(248, 148, 6, 0.2) !important;
+    /* Sombra sutil */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #db8205, #f89406) !important;
+    /* Gradiente invertido */
+    border: none !important;
+    /* Mantém sem bordas */
+    box-shadow: 0 2px 6px rgba(248, 148, 6, 0.4) !important;
+    /* Sombra elegante no hover */
+    transform: scaleX(1.2) !important;
+    /* Aumenta apenas um pouco na largura */
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: #f89406 !important;
+    box-shadow: 0 2px 8px rgba(248, 148, 6, 0.6) !important;
+    /* Sombra mais sutil no active */
+}
+
+/* Para Firefox */
+html {
+    scrollbar-width: thin !important;
+    /* Largura fina para elegância */
+    scrollbar-color: #f89406 rgba(36, 60, 79, 0.05) !important;
+    /* thumb laranja, track muito sutil */
+    scroll-behavior: smooth;
+}

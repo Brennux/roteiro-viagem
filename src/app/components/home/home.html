@@ -1,0 +1,61 @@
+<div>
+    <!-- Seção inicial - Navbar + Imagem -->
+    <div class="h-screen flex flex-col">
+        <!-- Navbar com borda inclinada -->
+        <nav
+            class="relative flex justify-between items-center p-3 bg-[#243c4f] text-white border-b-6 border-[#f89406] overflow-hidden flex-shrink-0">
+            <!-- Informações de contato - lado esquerdo -->
+            <div class="flex items-center space-x-6 relative z-10">
+                <div class="flex items-center space-x-2">
+                    <svg class="w-4 h-4 text-[#f89406]" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                    </svg>
+                    <span class="text-sm">+1.333.456.8890</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <svg class="w-4 h-4 text-[#f89406]" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                    </svg>
+                    <span class="text-sm">info&#64;example.com</span>
+                </div>
+            </div>
+
+            <!-- Menu de navegação - lado direito -->
+            <ul class="flex space-x-4 relative z-10">
+                <li><a href="" class="hover:underline">login</a></li>
+            </ul>
+
+            <!-- Elemento para criar a borda inclinada -->
+            <div class="absolute top-0 right-0 w-3xl h-full bg-[#db8205]"
+                style="clip-path: polygon(17% 0%, 100% 0%, 100% 100%, 10% 100%);"></div>
+        </nav>
+        <div class="flex-1 overflow-hidden">
+            <img src="/img_2.jpg" alt="Imagem de montanha" class="w-full h-full object-cover brightness-50">
+        </div>
+    </div>
+
+    <!-- Seção do Carrossel - Mesma proporção da tela -->
+    <div class="h-screen bg-gray-100 flex items-center justify-center">
+        <div class="carousel-container w-full h-full">
+            <!-- Área reservada para o carrossel -->
+            <div class="w-full h-full bg-white shadow-lg rounded-lg flex items-center justify-center">
+                <p class="text-gray-500 text-2xl">Área do Carrossel</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Seção com apenas o ponto laranja flutuando -->
+    <div class="h-screen bg-gradient-to-b from-gray-100 to-gray-200 flex items-center justify-center relative">
+        <!-- Ponto laranja flutuando -->
+        <div
+            class="w-32 h-32 bg-gradient-to-r from-[#f89406] to-[#db8205] rounded-full mx-auto animate-bounce shadow-2xl">
+        </div>
+    </div>
+
+    <!-- Seção final minimalista -->
+    <div class="h-screen bg-[#243c4f] flex items-center justify-center">
+
+    </div>
+</div>
